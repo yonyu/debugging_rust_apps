@@ -1,5 +1,5 @@
 [package]
-name = "debugging-rust"
+name = "debugging_rust_apps"
 version = "0.1.0"
 edition = "2021"
 

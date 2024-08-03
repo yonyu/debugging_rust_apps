@@ -22,11 +22,10 @@ Initialize a new Rust project inside a directory:
 - Rust Analyzer
 - RemedyBG
 #### Extensions
-
 - Rust Analyzer
-
+#### Installed Application
 - [RemedyBG](https://remedybg.itch.io/remedybg)
-- RemedyBG 0_4_0_2.zip
+
 
 ### Linux (Ubuntu)
 - Visual Studio Code (sudo dpkg -i code_1.75.1-1626302803_amd64.deb)
@@ -35,10 +34,10 @@ Initialize a new Rust project inside a directory:
 #### Extensions
 - CodeLLDB by Vadim Chugunov
 - Rust Analyzer
-
-- GDB
+#### Installed Application
 > sudo apt-get install gdb
-
+- GDB from command line
+  
 ### MacOS
 - Visual Studio Code
 - Rust Analyzer
@@ -58,4 +57,42 @@ Desired features of an IDE:
 - Debugging: clear views
 - Debugging: ways to dig in deeper
 - Friendly compatibility with profiling tools
+
+## Prepare using RemedyBG
+
+Launch RemedyBG
+
+### Session | Save As... |
+
+D:\workspace-rust\debugging_rust_apps\.remedybg\debugging_rust_app-ssession.rdbg
+
+
+ List installed and available targets
+
+>  rustup target list
+
+x86_64-pc-windows-msvc (installed)
+
+> rustup default 
+
+stable-x86_64-pc-windows-msvc (default)
+
+> rustup default stable-x86_64-pc-windows-msvc
+
+### Session | Application and Parameters
+
+Command: D:\workspace-rust\debugging_rust_apps\target\debug\debugging_rust_apps.exe
+Command Arguments: module_3:check_outstanding_orders
+Working Directory: No change
+
+### Source File | Open
+
+main.rs
+orders.rs
+
+### F5 to start debug
+
+In watch windows, type in "__locals", you'll see local variables
+
+Or, type: context.orders.len
 
