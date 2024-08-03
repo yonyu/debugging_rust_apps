@@ -58,7 +58,7 @@ Desired features of an IDE:
 - Debugging: ways to dig in deeper
 - Friendly compatibility with profiling tools
 
-## Prepare using RemedyBG
+## Prepare using RemedyBG in Windows
 
 Launch RemedyBG
 
@@ -88,6 +88,7 @@ Working Directory: No change
 ### Source File | Open
 
 main.rs
+
 orders.rs
 
 ### F5 to start debug
@@ -96,3 +97,87 @@ In watch windows, type in "__locals", you'll see local variables
 
 Or, type: context.orders.len
 
+
+## Debugging with command line interface gdb under Linux
+
+> sudo apt install gdb
+
+Enter the `debugging_rust_apps/target/debug` folder
+
+Launch gdb:
+> gdb --args ./debugging_rust_apps module_3:check_outstanding_orders
+
+You should see gdb prompt (gdb).
+
+Define break points:
+> break orders.rs:15
+
+Display break points defined:
+> info break
+> 
+Start debugging:
+> run
+
+Step over to the next line
+> n
+>
+
+Run to the next breakpoint
+> c
+>
+
+Disable/enable a break point with break # (you can see # with `info break`):
+> enable 1
+> 
+> disable 1
+
+Print out variable
+> print drip_brew_coffee_product
+>
+Delete a breakpoint
+> delete 1
+>  
+
+Watch a variable
+> watch product_id
+>
+Quit the debugging:
+> q
+>
+
+
+## Other tools and uses
+
+### Profilers
+
+- Intel VTune (premium tool)
+- AMD uProf (microprofiler)
+- Perf and flamegraph (for Linux)
+
+Tip: Start with one and master it
+
+## Debugging challenges
+
+### Logging, printing, handling
+
+In production environment
+
+**Logging:**
+- Tracking sizes of collections
+- Checking results of integration activities
+  - HTTP callouts
+- Enable additional detail for certain logging levels
+  - <span style="color:red">Additional info should contain mission-critical information for debugging</span>
+
+**Adding in feature toggles**
+
+### Parallelism and concurrency
+
+Performance improvements
+
+Paralelel processing is non-deterministic and thus timing can be different every time
+
+Run parallel execution code:
+
+> cargo run -- module_4:calc_order_totals
+>
